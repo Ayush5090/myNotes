@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_notes/components/notes_container.dart';
 import 'package:my_notes/screens/add_notes_screen.dart';
 import 'package:my_notes/screens/user_onboard/login_screen.dart';
+import 'package:my_notes/screens/view_or_update_notes.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -45,13 +46,19 @@ class _HomeScreenState extends State<HomeScreen> {
             return ListView.builder(
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
-                return NotesContainer(title: snapshot.data!.docs[index].get('title').toString(), description: snapshot.data!.docs[index].get('des').toString(),
-                deleteCallback: (){
-                  notes.doc(snapshot.data!.docs[index].id).delete();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Note Deleted'), duration: Duration(milliseconds: 700),)
-                  );
-                },);
+                return InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ViewNote(
+                        note: snapshot.data!.docs[index]),));
+                  },
+                  child: NotesContainer(title: snapshot.data!.docs[index].get('title').toString(), description: snapshot.data!.docs[index].get('des').toString(),
+                  deleteCallback: (){
+                    notes.doc(snapshot.data!.docs[index].id).delete();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Note Deleted'), duration: Duration(milliseconds: 700),)
+                    );
+                  },),
+                );
               },);
           } else if(snapshot.hasError){
             return Center(child: Text('${snapshot.error.toString()}'),);

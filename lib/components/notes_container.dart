@@ -38,7 +38,7 @@ class NotesContainer extends StatelessWidget {
         Align(
           alignment: Alignment.centerRight,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.width*0.07, vertical: size.width*0.07),
+              padding: EdgeInsets.symmetric(horizontal: size.width*0.05, vertical: size.width*0.07),
               child: InkWell(
                 onTap: deleteCallback,
                   child: CircularContainer(icon: Icon(Icons.delete, size: 21, color: Colors.white,), radius: size.width*0.057,)),
@@ -75,8 +75,8 @@ class MyClipper extends CustomClipper<Path>{
   @override
   getClip(Size size) {
     var mPath = Path();
-    mPath.lineTo(size.width*0.5, 0);
-    mPath.cubicTo(size.width, size.height*0.1, size.width*0.5, size.height*0.4, size.width, size.height*0.35);
+    mPath.lineTo(size.width, 0);
+    mPath.cubicTo(size.width, size.height*0.01, size.width*0.57, size.height*0.21, size.width, size.height*0.4);
     mPath.lineTo(size.width, size.height);
     mPath.lineTo(0, size.height);
     mPath.lineTo(0, 0);

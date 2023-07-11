@@ -1,7 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import '../../components/elevated_btn.dart';
 import '../../components/textfield.dart';
 import '../../ui_helper/ui_helper.dart';
